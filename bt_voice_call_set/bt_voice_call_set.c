@@ -129,7 +129,7 @@ int main(int argc ,char *argv[])
         "0x01",                          /* BT chip as Slave*/
         "0x40", "0x1f", "0x00", "0x00",  /* Sampling rate - 8KHz*/
         "0x01", "0x00",                  /* 50% Duty cycle*/
-        "0x00",                          /* Frame sync at rising edge*/
+        "0x01",                          /* Frame sync at falling edge*/
         "0x00",                          /* FS Active high polarity*/
         "0x00",                          /* FS direction - [Reserved]*/
         "0x10", "0x00",                  /* CH1 16 -bit OUT size*/

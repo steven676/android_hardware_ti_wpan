@@ -52,7 +52,7 @@
 
 #define VERBOSE
 #ifdef ANDROID
-#define LOG_TAG "uim-rfkill: "
+#define LOG_TAG "uim-sysfs: "
 #define UIM_ERR(fmt, arg...)  LOGE("uim:"fmt"\n" , ##arg)
 #if defined(UIM_DEBUG)          /* limited debug messages */
 #define UIM_START_FUNC()      LOGE("uim: Inside %s", __FUNCTION__)

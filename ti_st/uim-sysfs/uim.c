@@ -655,7 +655,7 @@ int main(int argc, char *argv[])
 	if (argc == 2) {
 		memset(&uim_bd_address, 0, sizeof(uim_bd_address));
 		/* BD address passed as string in xx:xx:xx:xx:xx:xx format */
-		strcpy(uim_bd_address, argv[5]);
+		strcpy(uim_bd_address, argv[1]);
 		bd_addr = strtoba(uim_bd_address);
 	} else if (argc != 1) {
 		UIM_ERR(" Invalid arguements");

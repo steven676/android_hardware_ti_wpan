@@ -129,7 +129,7 @@ extern int gMcpLogToFile;
  * This requires configuration of both playback and capture path
  * for OMAP4-ABE <-> Phoenix and hence these variables
  */
-#if defined TARGET_BOARD_PLATFORM == omap4
+#ifndef TARGET_BOARD_OMAP3
 snd_pcm_t *phandle, *chandle;
 static char *palsa_device = "hw:0,0";
 static char *calsa_device = "hw:0,1";
@@ -1147,7 +1147,7 @@ fm_status init_rx_stack(fm_rx_context_s  **fm_context)
 	FMAPP_BEGIN();
 
 	FMAPP_MSG("Powering on FM RX... (this might take awhile)");
-#if defined TARGET_BOARD_PLATFORM != omap4
+#ifdef TARGET_BOARD_OMAP3
 	/* Configure the Analog Loopback settings */
 	set_fmapp_audio_routing(fm_context);
 #else
@@ -1246,7 +1246,7 @@ fm_status deinit_rx_stack(fm_rx_context_s **fm_context)
 	FMAPP_BEGIN();
 
 	g_fmapp_now_initializing = 0;
-#if defined TARGET_BOARD_PLATFORM != omap4
+#ifdef TARGET_BOARD_OMAP3
 	/* Revert the analog loopback settings */
 	unset_fmapp_audio_routing(fm_context);
 #else

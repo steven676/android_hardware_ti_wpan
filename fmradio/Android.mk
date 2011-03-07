@@ -13,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ifeq ($(TARGET_BOARD_PLATFORM),omap4)
 ifeq ($(BUILD_FM_RADIO),true)
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
 ifeq ($(FM_CHR_DEV_ST),true)
@@ -21,6 +20,5 @@ include hardware/ti/wpan/fmradio/fm_chrlib/Android.mk
 endif
 include hardware/ti/wpan/fmradio/fm_stack/Android.mk
 include hardware/ti/wpan/fmradio/fm_app/Android.mk
-endif
 endif
 endif

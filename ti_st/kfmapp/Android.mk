@@ -9,9 +9,7 @@ ifeq ($(BUILD_FM_RADIO), true)
 ## Kerenl FM Driver Test Application
 #
 #
-LOCAL_C_INCLUDES:=\
-        external/bluetooth/bluez/lib \
-        $(ALSA_PATH)/include
+LOCAL_C_INCLUDES:= $(ALSA_PATH)/include
 
 LOCAL_CFLAGS:= -g -c -W -Wall -O2 -D_POSIX_SOURCE
 

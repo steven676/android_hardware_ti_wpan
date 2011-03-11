@@ -1,7 +1,7 @@
 /*
- *  TI FM kernel driver's test application.
+ *  TI FM kernel driver's sample application.
  *
- *  Copyright (C) 2009 Texas Instruments
+ *  Copyright (C) 2010 Texas Instruments
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License version 2 as
@@ -22,7 +22,6 @@
 #define _KFMAPP_H
 
 #define DEFAULT_RADIO_DEVICE    "/dev/radio0"
-#define DEFAULT_FM_ALSA_CARD    "hw:CARD=1"
 
 #define CTL_INDEX_0                0
 #define CTL_INDEX_1                1
@@ -73,26 +72,34 @@
 #define FM_RX_RDS_AF_SWITCH_MODE_ON	   1
 #define FM_RX_RDS_AF_SWITCH_MODE_OFF	   0
 
-#ifndef ANDROID
-#define VIDIOC_S_HW_FREQ_SEEK    _IOW('V', 82, struct v4l2_hw_freq_seek)
-
-struct v4l2_hw_freq_seek {
-		unsigned int                 tuner;
-		enum v4l2_tuner_type  type;
-		unsigned int                seek_upward;
-		unsigned int                wrap_around;
-		unsigned int                 reserved[8];
-
- };
-#endif
 /* Auto scan info */
 #define  FMAPP_ASCAN_SIGNAL_THRESHOLD_PER  50 /* 50 % */
 #define  FMAPP_ASCAN_NO_OF_SIGNAL_SAMPLE   3  /* 3 Samples */
+
+#define V4L2_CID_CHANNEL_SPACING (V4L2_CID_PRIVATE_BASE + 0)
 
 struct tx_rds {
         unsigned char   text_type;
         unsigned char   text[25];
         unsigned int    af_freq;
 };
+#define V4L2_CTRL_CLASS_FM_TX 0x009b0000        /* FM Modulator control class */
+/* FM Modulator class control IDs */
+#define V4L2_CID_FM_TX_CLASS_BASE               (V4L2_CTRL_CLASS_FM_TX | 0x900)
+#define V4L2_CID_FM_TX_CLASS                    (V4L2_CTRL_CLASS_FM_TX | 1)
+
+#define V4L2_CID_TUNE_PREEMPHASIS               (V4L2_CID_FM_TX_CLASS_BASE + 112)
+enum v4l2_preemphasis {
+        V4L2_PREEMPHASIS_DISABLED       = 0,
+        V4L2_PREEMPHASIS_50_uS          = 1,
+        V4L2_PREEMPHASIS_75_uS          = 2,
+};
+
+#define V4L2_CID_TUNE_POWER_LEVEL               (V4L2_CID_FM_TX_CLASS_BASE + 113)
+#define V4L2_CID_TUNE_ANTENNA_CAPACITOR         (V4L2_CID_FM_TX_CLASS_BASE + 114)
+#define V4L2_TUNER_SUB_RDS              0x0010
+
+#undef VIDIOC_S_MODULATOR
+#define VIDIOC_S_MODULATOR	1078220343
 #endif
 

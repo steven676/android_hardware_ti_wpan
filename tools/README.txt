@@ -9,4 +9,14 @@ Tools folder contains app or utilities for testing BT/FM
 
           For other platform or omap3, the  user needs to play mono 8k sample using aplay on shell
 
+2. kfmapp -
+    Description: This is a test tool to exercise function of v4l2 exposed by the FM V4L2 driver above the
+    TI-ST driver. This expects the /dev/radio0 to exist in the system - which is when FM V4L2 driver is
+    insmod-ed.
+    Generic functionalities like set frequency, FM volume, RDS enable/disable and get are all expected
+    to work straight-away.
+    Currently works on OMAP4, but there is no reason why it shouldn't work on OMAP3 platform as well provided
+    the build includes the FM V4L2 drivers.
+    Note: This may or may not enable the audio - depending on the state of the framework modifications in
+    the system.
 

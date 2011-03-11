@@ -720,6 +720,16 @@ int main(int argc, char *argv[])
 		UIM_DBG("GPS driver built into the kernel ?");
 	}
 
+	if (0 == lstat("/fm_v4l2_drv.ko", &file_stat)) {
+		if (insmod("/fm_v4l2_drv.ko", "") < 0) {
+			UIM_ERR(" Error inserting fm_v4l2_drv module, NO FM? ");
+		} else {
+			UIM_DBG(" Inserted fm_v4l2_drv module");
+		}
+	} else {
+		UIM_DBG("FM V4L2 driver module un-available... ");
+		UIM_DBG("FM V4L2 driver built into the kernel ?");
+	}
 	/* change rfkill perms after insertion of BT driver which asks
 	 * the Bluetooth sub-system to create the rfkill device of type
 	 * "bluetooth"
@@ -731,6 +741,10 @@ int main(int argc, char *argv[])
 
 	if (chmod("/dev/tifm", 0666) < 0) {
 		UIM_ERR("unable to chmod /dev/tifm");
+	}
+	/* Change the permissions for v4l2 Fm device node */
+	if (chmod("/dev/radio0", 0666) < 0) {
+		UIM_ERR("unable to chmod /dev/radio0");
 	}
 #endif /* ANDROID */
 	/* rfkill device's open/poll/read */

@@ -43,12 +43,14 @@ static int fm_aud_enable;
 /* #define V4L2_TUNER_SUB_RDS 0x10 */
 
 static char *g_mutemodes[]={"Mute On","Mute Off","Attenuate Voice"};
+/*
 static char *g_bands[]={"Europe/US","Japan"};
 static char *g_sm_modes[]={"Stereo","Mono"};
 static char *g_rx_deemphasis_modes[]={"50 usec","75 usec"};
-static char *g_rds_modes[]={"Off","On"};
 static char *g_rds_opmodes[]={"RDS","RBDS"};
 static char *g_af_switch_mode[]={"Off","On"};
+*/
+static char *g_rds_modes[]={"Off","On"};
 static int g_vol_to_set;
 static pthread_t g_rds_thread_ptr;
 volatile char g_rds_thread_terminate,g_rds_thread_running;
@@ -1150,7 +1152,7 @@ int fmapp_read_anddisplay_capabilities(void)
   return 0;
 }
 
-static void sig_handler(int sig)
+static void sig_handler()
 {
   if(g_rds_thread_running)
       g_rds_thread_terminate = 1;

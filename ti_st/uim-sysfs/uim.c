@@ -730,6 +730,13 @@ int main(int argc, char *argv[])
 		UIM_DBG("FM V4L2 driver module un-available... ");
 		UIM_DBG("FM V4L2 driver built into the kernel ?");
 	}
+	/* Change the permissions for v4l2 Fm device node */
+	if ((0 == lstat("/dev/radio0", &file_stat)) && chmod("/dev/radio0", 0666) < 0) {
+		UIM_ERR("unable to chmod /dev/radio0, might not exist");
+	}
+	if ((0 == lstat("/dev/tifm", &file_stat)) && chmod("/dev/tifm", 0666) < 0) {
+		UIM_ERR("unable to chmod /dev/tifm, might not exist");
+	}
 	/* change rfkill perms after insertion of BT driver which asks
 	 * the Bluetooth sub-system to create the rfkill device of type
 	 * "bluetooth"
@@ -739,13 +746,6 @@ int main(int argc, char *argv[])
 		UIM_ERR("rfkill not enabled in st_drv - BT on from UI might fail\n");
 	}
 
-	if (chmod("/dev/tifm", 0666) < 0) {
-		UIM_ERR("unable to chmod /dev/tifm");
-	}
-	/* Change the permissions for v4l2 Fm device node */
-	if (chmod("/dev/radio0", 0666) < 0) {
-		UIM_ERR("unable to chmod /dev/radio0");
-	}
 #endif /* ANDROID */
 	/* rfkill device's open/poll/read */
 	st_fd = open(INSTALL_SYSFS_ENTRY, O_RDONLY);

@@ -5191,6 +5191,12 @@ void _FM_TX_SM_SendAppCmdCompleteEvent(FmTxContext *context,
                             _fmTxSmData.context.appEvent.p.cmdDone.v.value >> 8;
             break;
 
+        case FM_TX_CMD_GET_TUNED_FREQUENCY:
+	    /* Multiply freq by 10 */
+            _fmTxSmData.context.appEvent.p.cmdDone.v.value =
+                            _fmTxSmData.context.appEvent.p.cmdDone.v.value * 10;
+            break;
+
         default:
             break;
     }

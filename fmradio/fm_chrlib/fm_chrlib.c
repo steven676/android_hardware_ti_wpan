@@ -161,7 +161,11 @@ void fm_receiver_thread(void)
 			ptr += EVT_CMD_COMPLETE_SIZE;
 			len -= EVT_CMD_COMPLETE_SIZE;
 
-			ptr++; //an extra Zero perhaps?
+			/* the rlen field - parameter length according
+			 * to HCI event spec is 0 when returned from
+			 * the FM chip - so calculate locally
+			 */
+			ptr++;
 			len--;
 
 			/* prepare response buffer */

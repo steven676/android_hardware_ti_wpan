@@ -13,5 +13,6 @@ ti_st -
 	uim/ - User-Space Initilization Manager for TI Shared Transport Drivers (to be
 	used with kernel version 2.6.32 and below drivers)
 	uim-rfkill/ - Derived from uim/ to be used with K32 and above TI ST drivers.
+	uim-sysfs/ - User-Space Init Manager for TI Shared Transport Drivers (per kernel.org)
 tools -
         BluetoothSCOApp/ - BT SCO UI App for connect to BT headset via SCO

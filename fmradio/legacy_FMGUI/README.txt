@@ -14,7 +14,10 @@ Install: out/target/product/blaze/system/framework/fmradioif.jar
 Install: out/target/product/blaze/system/etc/permissions/com.ti.fm.fmradioif.xml
 Install: out/target/product/blaze/system/lib/libfmradio.so
 
-NOTE: The above binaries are not build along with android file system and needs to be  build
-seperately in legacy_FMGUI\FM folder by executing mm.
-If user wants to include in Android file system build he can modify Android.mk of fmradio and can include
-legacy_FMGUI in Android.mk
+NOTE:
+1. Please execute the 'mm' build step on an Android source repository which
+has already been built, so that all the build dependecies are met.
+
+2. The above binaries are not build along with android file system by default and needs to be  build seperately in legacy_FMGUI\FM folder by executing mm.
+
+3. If user wants to include in Android file system build he can modify Android.mk of fmradio and can include legacy_FMGUI in Android.mk

@@ -481,7 +481,7 @@ int st_uart_config(unsigned char install)
 		/* After the UART speed has been changed, the IOCTL is
 		 * is called to set the line discipline to N_TI_WL
 		 */
-		ldisc = 22;
+		ldisc = N_TI_WL;
 		if (ioctl(dev_fd, TIOCSETD, &ldisc) < 0) {
 			UIM_ERR(" Can't set line discipline");
 			close(dev_fd);

@@ -21,4 +21,7 @@ endif
 include hardware/ti/wpan/fmradio/fm_stack/Android.mk
 include hardware/ti/wpan/fmradio/fm_app/Android.mk
 endif
+ifeq ($(BUILD_TI_FM_APPS),true)
+include hardware/ti/wpan/fmradio/legacy_FMGUI/FM/Android.mk
+endif
 endif

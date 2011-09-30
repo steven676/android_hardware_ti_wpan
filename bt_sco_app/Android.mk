@@ -1,3 +1,4 @@
+ifeq (1,2)
 ifeq ($(BOARD_HAVE_BLUETOOTH),true)
 LOCAL_PATH:= $(call my-dir)
 
@@ -27,4 +28,5 @@ LOCAL_MODULE:=bt_sco_app
 
 include $(BUILD_EXECUTABLE)
 
+endif
 endif

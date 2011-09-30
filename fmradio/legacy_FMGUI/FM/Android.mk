@@ -16,7 +16,7 @@
 #TO Check whether we need any flags to enable FM
 #ifeq ($(CFG_FM_SERVICE_TI),yes)
   include hardware/ti/wpan/fmradio/legacy_FMGUI/FM/FmRxApp/Android.mk
-  include hardware/ti/wpan/fmradio/legacy_FMGUI/FM/FmTxApp/Android.mk
+#  include hardware/ti/wpan/fmradio/legacy_FMGUI/FM/FmTxApp/Android.mk
   include hardware/ti/wpan/fmradio/legacy_FMGUI/FM/service/Android.mk
   include hardware/ti/wpan/fmradio/legacy_FMGUI/FM/FmRadioIf/Android.mk
   include hardware/ti/wpan/fmradio/legacy_FMGUI/FM/service/src/jni/Android.mk
